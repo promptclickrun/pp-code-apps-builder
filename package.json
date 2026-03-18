@@ -1,5 +1,5 @@
 {
-  "name": "@anthropic-power-apps/code-apps-skill",
+  "name": "pp-code-apps-builder",
   "version": "1.0.0",
   "description": "Multi-agent AI skill for Power Apps Code Apps development — scaffolding, data connections, deployment, architecture, and planning. Works with GitHub Copilot, Claude Code, and VS Code.",
   "keywords": [
