@@ -1,5 +1,6 @@
 {
   "name": "pp-code-apps-builder",
+  "owner": "promptclickrun",
   "description": "Power Apps Code Apps multi-agent skill for Claude Code and Copilot CLI",
   "plugins": [
     {
