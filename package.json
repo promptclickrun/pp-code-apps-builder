@@ -1,6 +1,6 @@
 {
   "name": "pp-code-apps-builder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Multi-agent AI skill for Power Apps Code Apps development — scaffolding, data connections, deployment, architecture, and planning. Works with GitHub Copilot, Claude Code, and VS Code.",
   "keywords": [
     "power-apps",
@@ -22,7 +22,7 @@
   "homepage": "https://github.com/promptclickrun/pp-code-apps-builder",
   "repository": {
     "type": "git",
-    "url": "https://github.com/promptclickrun/pp-code-apps-builder.git"
+    "url": "git+https://github.com/promptclickrun/pp-code-apps-builder.git"
   },
   "license": "MIT",
   "author": {
@@ -30,7 +30,7 @@
   },
   "type": "module",
   "bin": {
-    "power-apps-skill": "./bin/install.js"
+    "pp-code-apps-builder": "./bin/install.js"
   },
   "files": [
     "bin/",
