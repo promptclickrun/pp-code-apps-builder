@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 
 /**
- * power-apps-skill — Cross-platform installer for Power Apps Code Apps skill
+ * pp-code-apps-builder — Cross-platform installer for Power Apps Code Apps skill
  *
- * Usage:
- *   npx pp-code-apps-builder --target copilot|claude|all [--scope workspace|user] [--dest <path>] [--dry-run]
+ * Install from GitHub (no npm publish required):
  *   npx github:promptclickrun/pp-code-apps-builder --target all
+ *
+ * Install from npm (if published):
+ *   npx pp-code-apps-builder --target copilot|claude|all [--scope workspace|user] [--dest <path>] [--dry-run]
  */
 
 import { existsSync, mkdirSync, copyFileSync, writeFileSync, readdirSync, readFileSync } from 'node:fs';
@@ -33,10 +35,13 @@ const dryRun = hasFlag('dry-run');
 
 if (hasFlag('help') || hasFlag('h')) {
   console.log(`
-power-apps-skill — Install Power Apps Code Apps skill + agents
+pp-code-apps-builder — Install Power Apps Code Apps skill + agents
 
-Usage:
-  npx power-apps-skill --target <copilot|claude|all> [options]
+Install from GitHub (no npm publish required):
+  npx github:promptclickrun/pp-code-apps-builder --target all
+
+Install from npm:
+  npx pp-code-apps-builder --target <copilot|claude|all> [options]
 
 Options:
   --target <copilot|claude|all>  Target platform (default: all)
@@ -44,6 +49,9 @@ Options:
   --dest <path>                  Destination workspace root (default: cwd)
   --dry-run                      Show what would be copied without writing
   --help                         Show this help
+
+Claude Code plugin (alternative — no installer needed):
+  /plugin marketplace add promptclickrun/pp-code-apps-builder
 `);
   process.exit(0);
 }

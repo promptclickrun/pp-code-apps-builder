@@ -63,7 +63,8 @@
     ]
   },
   "install": {
-    "command": "npx pp-code-apps-builder --target claude",
+    "github": "npx github:promptclickrun/pp-code-apps-builder --target claude",
+    "npm": "npx pp-code-apps-builder --target claude",
     "plugin": "/plugin marketplace add promptclickrun/pp-code-apps-builder && /plugin install power-apps-code-apps@promptclickrun-pp-code-apps-builder",
     "manual": {
       "skillPath": ".claude/skills/power-apps-code-apps/",

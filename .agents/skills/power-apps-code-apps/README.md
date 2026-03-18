@@ -73,14 +73,14 @@ You can also browse and install interactively:
 Copy skill files directly into your project (no plugin system required):
 
 ```bash
-# Using the Node.js installer
-npx pp-code-apps-builder --target claude
-
-# Or from GitHub directly
+# Install from GitHub (no npm publish required)
 npx github:promptclickrun/pp-code-apps-builder --target claude
 
+# Or from npm (if published)
+npx pp-code-apps-builder --target claude
+
 # Or install to your personal skills (all projects)
-npx pp-code-apps-builder --target claude --scope user
+npx github:promptclickrun/pp-code-apps-builder --target claude --scope user
 ```
 
 This copies the skill to `.claude/skills/power-apps-code-apps/` and `CLAUDE.md`.
@@ -90,14 +90,14 @@ This copies the skill to `.claude/skills/power-apps-code-apps/` and `CLAUDE.md`.
 Copilot CLI discovers skills from `.github/skills/` and agents from `.github/agents/` automatically. Clone or install the files into your project:
 
 ```bash
-# Using the Node.js installer
-npx pp-code-apps-builder --target copilot
-
-# Or from GitHub directly
+# Install from GitHub (no npm publish required)
 npx github:promptclickrun/pp-code-apps-builder --target copilot
 
+# Or from npm (if published)
+npx pp-code-apps-builder --target copilot
+
 # Or install to your personal skills (all projects)
-npx pp-code-apps-builder --target copilot --scope user
+npx github:promptclickrun/pp-code-apps-builder --target copilot --scope user
 ```
 
 Once installed, Copilot CLI picks up the skill automatically:
@@ -112,11 +112,11 @@ The installer also copies `.github/copilot-instructions.md` and agent files (`.g
 ### VS Code — GitHub Copilot Chat
 
 ```bash
-# Install for both Copilot and Claude
-npx pp-code-apps-builder --target all
-
-# Or from GitHub
+# Install from GitHub (no npm publish required)
 npx github:promptclickrun/pp-code-apps-builder --target all
+
+# Or from npm (if published)
+npx pp-code-apps-builder --target all
 ```
 
 Then use `/power-apps-code-apps` in Copilot Chat.
@@ -124,6 +124,10 @@ Then use `/power-apps-code-apps` in Copilot Chat.
 ### All Platforms at Once
 
 ```bash
+# From GitHub (recommended)
+npx github:promptclickrun/pp-code-apps-builder --target all
+
+# From npm
 npx pp-code-apps-builder --target all
 ```
 
