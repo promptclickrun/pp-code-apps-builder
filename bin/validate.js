@@ -71,7 +71,17 @@ check('bin/install.js', 'bin/install.js');
 
 console.log('\nPlatform files:');
 check('CLAUDE.md', 'CLAUDE.md');
+check('.github/copilot-instructions.md', 'copilot-instructions.md');
 check('LICENSE', 'LICENSE');
+
+console.log('\nClaude Code plugin:');
+checkJson('.claude-plugin/plugin.json', 'plugin.json');
+checkJson('.claude-plugin/marketplace.json', 'marketplace.json');
+check('skills/power-apps-code-apps/SKILL.md', 'plugin skill SKILL.md');
+
+console.log('\nSkill mirrors:');
+check('.github/skills/power-apps-code-apps/SKILL.md', 'Copilot CLI skill');
+check('.claude/skills/power-apps-code-apps/SKILL.md', 'Claude standalone skill');
 
 console.log(`\n=== ${errors === 0 ? 'All checks passed ✓' : `${errors} error(s) found ✗`} ===`);
 process.exit(errors > 0 ? 1 : 0);

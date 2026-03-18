@@ -1,0 +1,12 @@
+{
+  "name": "power-apps-code-apps",
+  "description": "Multi-agent skill for Power Apps Code Apps development — React/TypeScript on Power Platform with Dataverse, Azure SQL, SharePoint, Copilot Studio. Covers frontend, backend, infrastructure, business analysis, architecture, and product management.",
+  "version": "1.0.1",
+  "author": {
+    "name": "promptclickrun",
+    "url": "https://github.com/promptclickrun/pp-code-apps-builder"
+  },
+  "homepage": "https://github.com/promptclickrun/pp-code-apps-builder",
+  "repository": "https://github.com/promptclickrun/pp-code-apps-builder",
+  "license": "MIT"
+}

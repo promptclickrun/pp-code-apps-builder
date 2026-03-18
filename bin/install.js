@@ -4,8 +4,8 @@
  * power-apps-skill — Cross-platform installer for Power Apps Code Apps skill
  *
  * Usage:
- *   npx power-apps-skill --target copilot|claude|all [--scope workspace|user] [--dest <path>] [--dry-run]
- *   npx @anthropic-power-apps/code-apps-skill --target all
+ *   npx pp-code-apps-builder --target copilot|claude|all [--scope workspace|user] [--dest <path>] [--dry-run]
+ *   npx github:promptclickrun/pp-code-apps-builder --target all
  */
 
 import { existsSync, mkdirSync, copyFileSync, writeFileSync, readdirSync, readFileSync } from 'node:fs';
@@ -132,6 +132,17 @@ if (target === 'copilot' || target === 'all') {
     if (existsSync(extJson)) {
       copyFile(extJson, join(dest, 'copilot-extensions.json'));
     }
+
+    // Copy copilot-instructions.md (auto-loaded by Copilot CLI)
+    const copilotInstructions = join(PKG_ROOT, '.github', 'copilot-instructions.md');
+    if (existsSync(copilotInstructions)) {
+      const destInstructions = join(dest, '.github', 'copilot-instructions.md');
+      if (!existsSync(destInstructions)) {
+        copyFile(copilotInstructions, destInstructions);
+      } else {
+        console.log('  ⓘ .github/copilot-instructions.md already exists, skipping');
+      }
+    }
   }
   if (scope === 'user') {
     console.log('\n[Copilot] Installing to user profile...');
@@ -173,4 +184,10 @@ if (scope === 'workspace' && existsSync(unifiedManifest)) {
 console.log('\n=== Installation complete ===');
 console.log('Skill:  power-apps-code-apps');
 console.log('Agents: pa-frontend, pa-backend, pa-infra, pa-business-analyst, pa-architect, pa-product-manager');
-console.log('\nTry: /power-apps-code-apps "scaffold a new code app with Dataverse"');
+console.log('\nUsage:');
+console.log('  Copilot CLI:  copilot → /power-apps-code-apps "scaffold a new code app"');
+console.log('  Claude Code:  claude → /power-apps-code-apps "connect to Dataverse"');
+console.log('  VS Code:      /power-apps-code-apps in Copilot Chat');
+console.log('\nClaude Code plugin (alternative):');
+console.log('  /plugin marketplace add promptclickrun/pp-code-apps-builder');
+console.log('  /plugin install power-apps-code-apps@promptclickrun-pp-code-apps-builder');

@@ -1,34 +1,35 @@
 # Power Apps Code Apps Skill
 
-A multi-agent orchestrator skill for building, connecting, deploying, and managing **Power Apps Code Apps** (React/TypeScript on Power Platform). Distributed as an installable package for GitHub Copilot, Claude Code, and VS Code.
+A multi-agent orchestrator skill for building, connecting, deploying, and managing **Power Apps Code Apps** (React/TypeScript on Power Platform). Distributed as an installable package for GitHub Copilot CLI, Claude Code, and VS Code.
 
 ## What's Included
 
 ```
 pp-code-apps-builder/
-├── package.json                      # npm package manifest (publish to registry)
+├── package.json                      # npm package manifest
 ├── skill-manifest.json               # Unified skill manifest (cross-platform)
 ├── copilot-extensions.json           # GitHub Copilot Extensions manifest
 ├── claude-skill-manifest.json        # Claude skill manifest
+├── .claude-plugin/
+│   ├── plugin.json                   # Claude Code plugin manifest
+│   └── marketplace.json              # Claude Code marketplace catalog
 ├── CLAUDE.md                         # Claude Code project instructions
+├── .github/copilot-instructions.md   # Copilot CLI project instructions
 ├── LICENSE                           # MIT license
 ├── bin/
 │   ├── install.js                    # Cross-platform Node.js installer
 │   └── validate.js                   # Pre-publish validation
-├── .agents/skills/power-apps-code-apps/
+├── skills/power-apps-code-apps/      # Plugin skills (Claude Code plugin system)
 │   ├── SKILL.md                      # Orchestrator — routes to 6 agents
-│   ├── README.md                     # This file
-│   ├── references/
-│   │   ├── frontend.md               # Scaffolding, migration, context, embedding, UI
-│   │   ├── backend-data.md           # Dataverse, SQL, SharePoint, Copilot Studio, metadata
-│   │   └── infra-ops.md              # ALM, CSP, App Insights, telemetry, Azure Functions
-│   └── scripts/
-│       ├── install.ps1               # Windows installer (PowerShell)
-│       └── install.sh                # macOS/Linux installer (Bash)
+│   └── references/
+│       ├── frontend.md               # Scaffolding, migration, context, embedding, UI
+│       ├── backend-data.md           # Dataverse, SQL, SharePoint, Copilot Studio, metadata
+│       └── infra-ops.md              # ALM, CSP, App Insights, telemetry, Azure Functions
+├── .agents/skills/power-apps-code-apps/  # VS Code Copilot skill location
 ├── .github/
 │   ├── copilot-skills.json           # GitHub Copilot skill index
-│   ├── workflows/publish.yml         # CI/CD for npm + GitHub Packages
-│   ├── skills/power-apps-code-apps/  # Mirror for .github discovery
+│   ├── copilot-instructions.md       # Copilot CLI auto-loaded instructions
+│   ├── skills/power-apps-code-apps/  # Copilot CLI skill location
 │   └── agents/
 │       ├── power-apps-code-apps.agent.md   # Orchestrator agent
 │       ├── pa-frontend.agent.md            # React/TypeScript/Vite specialist
@@ -37,8 +38,105 @@ pp-code-apps-builder/
 │       ├── pa-business-analyst.agent.md    # Requirements & data modeling
 │       ├── pa-architect.agent.md           # Solution architecture & design
 │       └── pa-product-manager.agent.md     # Roadmap, planning & releases
-└── .claude/skills/power-apps-code-apps/    # Mirror for Claude Code discovery
+└── .claude/skills/power-apps-code-apps/    # Claude Code standalone skill location
 ```
+
+## Installation
+
+### Claude Code — Plugin Marketplace (Recommended)
+
+Claude Code has a full plugin marketplace system. Add this repo as a marketplace and install the skill as a plugin:
+
+```bash
+# Inside a Claude Code session:
+
+# 1. Add the marketplace
+/plugin marketplace add promptclickrun/pp-code-apps-builder
+
+# 2. Install the plugin
+/plugin install power-apps-code-apps@promptclickrun-pp-code-apps-builder
+
+# 3. Reload to activate
+/reload-plugins
+
+# Then use it:
+/power-apps-code-apps:power-apps-code-apps scaffold a new code app with Dataverse
+```
+
+You can also browse and install interactively:
+```bash
+/plugin          # Opens the plugin manager UI — go to Discover tab
+```
+
+### Claude Code — Standalone Skills
+
+Copy skill files directly into your project (no plugin system required):
+
+```bash
+# Using the Node.js installer
+npx pp-code-apps-builder --target claude
+
+# Or from GitHub directly
+npx github:promptclickrun/pp-code-apps-builder --target claude
+
+# Or install to your personal skills (all projects)
+npx pp-code-apps-builder --target claude --scope user
+```
+
+This copies the skill to `.claude/skills/power-apps-code-apps/` and `CLAUDE.md`.
+
+### GitHub Copilot CLI — Skills & Agents
+
+Copilot CLI discovers skills from `.github/skills/` and agents from `.github/agents/` automatically. Clone or install the files into your project:
+
+```bash
+# Using the Node.js installer
+npx pp-code-apps-builder --target copilot
+
+# Or from GitHub directly
+npx github:promptclickrun/pp-code-apps-builder --target copilot
+
+# Or install to your personal skills (all projects)
+npx pp-code-apps-builder --target copilot --scope user
+```
+
+Once installed, Copilot CLI picks up the skill automatically:
+```bash
+copilot
+# Then in the session:
+/power-apps-code-apps scaffold a new code app with Dataverse
+```
+
+The installer also copies `.github/copilot-instructions.md` and agent files (`.github/agents/pa-*.agent.md`).
+
+### VS Code — GitHub Copilot Chat
+
+```bash
+# Install for both Copilot and Claude
+npx pp-code-apps-builder --target all
+
+# Or from GitHub
+npx github:promptclickrun/pp-code-apps-builder --target all
+```
+
+Then use `/power-apps-code-apps` in Copilot Chat.
+
+### All Platforms at Once
+
+```bash
+npx pp-code-apps-builder --target all
+```
+
+### Manual Copy
+
+| Platform | Skill Location | Agent Location | Instructions File |
+|----------|---------------|----------------|-------------------|
+| **Copilot CLI** | `.github/skills/power-apps-code-apps/` | `.github/agents/` | `.github/copilot-instructions.md` |
+| **Copilot CLI (personal)** | `~/.copilot/skills/power-apps-code-apps/` | — | `~/.copilot/copilot-instructions.md` |
+| **VS Code Copilot** | `.agents/skills/power-apps-code-apps/` | `.github/agents/` | `.github/copilot-instructions.md` |
+| **Claude Code** | `.claude/skills/power-apps-code-apps/` | — | `CLAUDE.md` |
+| **Claude Code (personal)** | `~/.claude/skills/power-apps-code-apps/` | — | — |
+| **Claude Code (plugin)** | Via `/plugin marketplace add` | — | — |
 
 ## Manifests
 
@@ -46,60 +144,13 @@ pp-code-apps-builder/
 |------|---------|----------|
 | `package.json` | npm registry distribution, `npx` installer | npm / GitHub Packages |
 | `skill-manifest.json` | Unified skill descriptor (cross-platform) | All |
-| `copilot-extensions.json` | Copilot Extensions marketplace registration | GitHub Copilot |
+| `copilot-extensions.json` | Copilot Extensions registration | GitHub Copilot |
 | `.github/copilot-skills.json` | Skill index for GitHub repo discovery | GitHub Copilot |
+| `.github/copilot-instructions.md` | Auto-loaded Copilot CLI instructions | GitHub Copilot CLI |
 | `claude-skill-manifest.json` | Claude skill registration | Claude Code / CLI |
+| `.claude-plugin/plugin.json` | Claude Code plugin manifest | Claude Code plugin system |
+| `.claude-plugin/marketplace.json` | Claude Code marketplace catalog | Claude Code plugin marketplace |
 | `CLAUDE.md` | Project-level instructions for Claude | Claude Code / CLI |
-
-## Installation
-
-### Option 1: npm (Recommended)
-
-Install into any project with a single command:
-
-```bash
-# Install for both Copilot and Claude
-npx @anthropic-power-apps/code-apps-skill --target all
-
-# Copilot only
-npx @anthropic-power-apps/code-apps-skill --target copilot
-
-# Claude only
-npx @anthropic-power-apps/code-apps-skill --target claude
-
-# User-level (personal, all workspaces)
-npx @anthropic-power-apps/code-apps-skill --target all --scope user
-
-# Preview changes without writing
-npx @anthropic-power-apps/code-apps-skill --target all --dry-run
-```
-
-### Option 2: Clone This Repo
-
-If you cloned this repo, everything is already in place. Open VS Code and type `/power-apps-code-apps` in Copilot Chat.
-
-### Option 3: Platform-Specific Scripts
-
-#### Windows (PowerShell)
-
-```powershell
-.\\.agents\skills\power-apps-code-apps\scripts\install.ps1 -Target all -Scope workspace
-```
-
-#### macOS / Linux (Bash)
-
-```bash
-bash .agents/skills/power-apps-code-apps/scripts/install.sh --target all --scope workspace
-```
-
-### Option 4: Manual Copy
-
-| Platform | Skill Location | Agent Location |
-|----------|---------------|----------------|
-| **Copilot (workspace)** | `.agents/skills/power-apps-code-apps/` or `.github/skills/power-apps-code-apps/` | `.github/agents/` |
-| **Copilot (user)** | `~/.copilot/skills/power-apps-code-apps/` | VS Code user prompts folder |
-| **Claude (workspace)** | `.claude/skills/power-apps-code-apps/` + `CLAUDE.md` | N/A |
-| **Claude (user)** | `~/.claude/skills/power-apps-code-apps/` | N/A |
 
 ## Publishing
 

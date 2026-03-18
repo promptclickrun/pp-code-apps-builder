@@ -63,7 +63,8 @@
     ]
   },
   "install": {
-    "command": "npx power-apps-skill --target claude",
+    "command": "npx pp-code-apps-builder --target claude",
+    "plugin": "/plugin marketplace add promptclickrun/pp-code-apps-builder && /plugin install power-apps-code-apps@promptclickrun-pp-code-apps-builder",
     "manual": {
       "skillPath": ".claude/skills/power-apps-code-apps/",
       "projectFile": "CLAUDE.md"

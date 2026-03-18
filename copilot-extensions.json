@@ -44,8 +44,9 @@
     },
     {
       "platform": "copilot-cli",
-      "skillPath": ".agents/skills/power-apps-code-apps/",
-      "agentsPath": ".github/agents/"
+      "skillPath": ".github/skills/power-apps-code-apps/",
+      "agentsPath": ".github/agents/",
+      "instructionsFile": ".github/copilot-instructions.md"
     },
     {
       "platform": "claude-code",

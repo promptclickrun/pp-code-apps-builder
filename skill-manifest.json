@@ -105,7 +105,10 @@
     ]
   },
   "install": {
-    "npm": "npx @anthropic-power-apps/code-apps-skill --target all",
+    "npm": "npx pp-code-apps-builder --target all",
+    "github": "npx github:promptclickrun/pp-code-apps-builder --target all",
+    "copilot-cli": "Copy .github/skills/power-apps-code-apps/ into your project and use /power-apps-code-apps",
+    "claude-code-plugin": "/plugin marketplace add promptclickrun/pp-code-apps-builder && /plugin install power-apps-code-apps@promptclickrun-pp-code-apps-builder",
     "manual": "See README.md for manual installation"
   }
 }

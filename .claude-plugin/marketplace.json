@@ -1,0 +1,13 @@
+{
+  "name": "pp-code-apps-builder",
+  "description": "Power Apps Code Apps multi-agent skill for Claude Code and Copilot CLI",
+  "plugins": [
+    {
+      "name": "power-apps-code-apps",
+      "description": "Multi-agent skill for Power Apps Code Apps development — React/TypeScript on Power Platform with Dataverse, Azure SQL, SharePoint, Copilot Studio. Covers frontend, backend, infrastructure, business analysis, architecture, and product management.",
+      "version": "1.0.1",
+      "source": ".",
+      "homepage": "https://github.com/promptclickrun/pp-code-apps-builder"
+    }
+  ]
+}
