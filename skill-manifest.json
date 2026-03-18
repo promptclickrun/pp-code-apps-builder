@@ -1,0 +1,111 @@
+{
+  "$schema": "https://raw.githubusercontent.com/anthropics/skill-manifest/main/schema.json",
+  "manifestVersion": "1.0.0",
+  "id": "power-apps-code-apps",
+  "version": "1.0.0",
+  "name": "Power Apps Code Apps",
+  "description": "Multi-agent AI skill for building, connecting, deploying, and managing Power Apps Code Apps (React/TypeScript on Power Platform).",
+  "publisher": "power-apps-code-apps-team",
+  "license": "MIT",
+  "repository": "https://github.com/promptclickrun/pp-code-apps-builder",
+  "icon": "assets/icon.png",
+  "categories": [
+    "Development",
+    "Power Platform",
+    "React",
+    "TypeScript",
+    "AI Agents"
+  ],
+  "platforms": {
+    "github-copilot": {
+      "vscode": true,
+      "cli": true,
+      "dotcom": true
+    },
+    "claude": {
+      "code": true,
+      "cli": true,
+      "desktop": false
+    }
+  },
+  "components": {
+    "skill": {
+      "name": "power-apps-code-apps",
+      "entrypoint": "SKILL.md",
+      "basePath": ".agents/skills/power-apps-code-apps",
+      "references": [
+        "references/frontend.md",
+        "references/backend-data.md",
+        "references/infra-ops.md"
+      ]
+    },
+    "agents": [
+      {
+        "name": "power-apps-code-apps",
+        "file": "power-apps-code-apps.agent.md",
+        "role": "orchestrator"
+      },
+      {
+        "name": "pa-frontend",
+        "file": "pa-frontend.agent.md",
+        "role": "specialist",
+        "domain": "frontend"
+      },
+      {
+        "name": "pa-backend",
+        "file": "pa-backend.agent.md",
+        "role": "specialist",
+        "domain": "backend"
+      },
+      {
+        "name": "pa-infra",
+        "file": "pa-infra.agent.md",
+        "role": "specialist",
+        "domain": "infrastructure"
+      },
+      {
+        "name": "pa-business-analyst",
+        "file": "pa-business-analyst.agent.md",
+        "role": "specialist",
+        "domain": "business-analysis"
+      },
+      {
+        "name": "pa-architect",
+        "file": "pa-architect.agent.md",
+        "role": "specialist",
+        "domain": "architecture"
+      },
+      {
+        "name": "pa-product-manager",
+        "file": "pa-product-manager.agent.md",
+        "role": "specialist",
+        "domain": "product-management"
+      }
+    ]
+  },
+  "knowledgeSources": {
+    "documentation": [
+      { "file": "alm.md", "topic": "Application Lifecycle Management" },
+      { "file": "analyze-data-request-response.md", "topic": "Network debugging" },
+      { "file": "connect-to-azure-sql.md", "topic": "Azure SQL integration" },
+      { "file": "connect-to-copilot-studio.md", "topic": "Copilot Studio agents" },
+      { "file": "connect-to-data.md", "topic": "Data source framework" },
+      { "file": "connect-to-dataverse.md", "topic": "Dataverse CRUD" },
+      { "file": "content-security-policy.md", "topic": "CSP configuration" },
+      { "file": "create-an-app-from-scratch.md", "topic": "App scaffolding" },
+      { "file": "create-basic-asset-management-api-azure-functions.md", "topic": "Azure Functions API" },
+      { "file": "embed-iframe.md", "topic": "Iframe embedding" },
+      { "file": "get-table-metadata.md", "topic": "Table metadata" },
+      { "file": "migrate-to-v1.md", "topic": "v1 migration" },
+      { "file": "npm-quickstart.md", "topic": "npm CLI" },
+      { "file": "retrieve-context.md", "topic": "Context API" },
+      { "file": "set-up-azure-app-insights.md", "topic": "App Insights telemetry" },
+      { "file": "sharepoint-operations.md", "topic": "SharePoint CRUD" },
+      { "file": "telemetry.md", "topic": "CLI telemetry" }
+    ]
+  },
+  "install": {
+    "npm": "npx @anthropic-power-apps/code-apps-skill --target all",
+    "manual": "See README.md for manual installation"
+  }
+}

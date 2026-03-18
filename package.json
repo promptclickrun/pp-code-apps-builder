@@ -1,0 +1,62 @@
+{
+  "name": "@anthropic-power-apps/code-apps-skill",
+  "version": "1.0.0",
+  "description": "Multi-agent AI skill for Power Apps Code Apps development — scaffolding, data connections, deployment, architecture, and planning. Works with GitHub Copilot, Claude Code, and VS Code.",
+  "keywords": [
+    "power-apps",
+    "code-apps",
+    "copilot-skill",
+    "claude-skill",
+    "github-copilot",
+    "claude-code",
+    "power-platform",
+    "dataverse",
+    "react",
+    "typescript",
+    "vite",
+    "pac-cli",
+    "alm",
+    "ai-agent",
+    "multi-agent"
+  ],
+  "homepage": "https://github.com/promptclickrun/pp-code-apps-builder",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/promptclickrun/pp-code-apps-builder.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Power Apps Code Apps Team"
+  },
+  "type": "module",
+  "bin": {
+    "power-apps-skill": "./bin/install.js"
+  },
+  "files": [
+    "bin/",
+    ".agents/skills/power-apps-code-apps/",
+    ".github/agents/pa-*.agent.md",
+    ".github/agents/power-apps-code-apps.agent.md",
+    ".github/copilot-skills.json",
+    ".claude/",
+    "CLAUDE.md",
+    "copilot-extensions.json",
+    "skill-manifest.json",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "install:copilot": "node bin/install.js --target copilot",
+    "install:claude": "node bin/install.js --target claude",
+    "install:all": "node bin/install.js --target all",
+    "postinstall": "echo 'Run: npx power-apps-skill --target all to install skill files into your project'",
+    "test": "node bin/install.js --dry-run",
+    "prepublishOnly": "node bin/validate.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

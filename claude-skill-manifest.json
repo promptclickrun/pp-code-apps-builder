@@ -1,0 +1,72 @@
+{
+  "$schema": "https://docs.anthropic.com/skill-manifest/v1",
+  "name": "power-apps-code-apps",
+  "version": "1.0.0",
+  "displayName": "Power Apps Code Apps",
+  "description": "Multi-agent skill for Power Apps Code Apps development — React/TypeScript on Power Platform with Dataverse, Azure SQL, SharePoint, Copilot Studio, and more.",
+  "author": "power-apps-code-apps-team",
+  "license": "MIT",
+  "repository": "https://github.com/promptclickrun/pp-code-apps-builder",
+  "platforms": ["claude-code", "claude-cli"],
+  "skill": {
+    "entrypoint": ".claude/skills/power-apps-code-apps/SKILL.md",
+    "projectInstructions": "CLAUDE.md"
+  },
+  "knowledge": {
+    "references": [
+      {
+        "name": "Frontend — scaffolding, migration, context, embedding, UI",
+        "path": ".claude/skills/power-apps-code-apps/references/frontend.md"
+      },
+      {
+        "name": "Backend — Dataverse, Azure SQL, SharePoint, Copilot Studio, metadata",
+        "path": ".claude/skills/power-apps-code-apps/references/backend-data.md"
+      },
+      {
+        "name": "Infrastructure — ALM, CSP, App Insights, telemetry, Azure Functions",
+        "path": ".claude/skills/power-apps-code-apps/references/infra-ops.md"
+      }
+    ],
+    "sourceDocumentation": [
+      "alm.md",
+      "analyze-data-request-response.md",
+      "connect-to-azure-sql.md",
+      "connect-to-copilot-studio.md",
+      "connect-to-data.md",
+      "connect-to-dataverse.md",
+      "content-security-policy.md",
+      "create-an-app-from-scratch.md",
+      "create-basic-asset-management-api-azure-functions.md",
+      "embed-iframe.md",
+      "get-table-metadata.md",
+      "migrate-to-v1.md",
+      "npm-quickstart.md",
+      "retrieve-context.md",
+      "set-up-azure-app-insights.md",
+      "sharepoint-operations.md",
+      "telemetry.md"
+    ]
+  },
+  "activation": {
+    "triggers": [
+      "power apps code app",
+      "code app",
+      "pac code",
+      "Dataverse",
+      "connect data source",
+      "deploy code app",
+      "PAC CLI",
+      "npm CLI",
+      "connection reference",
+      "CSP",
+      "App Insights"
+    ]
+  },
+  "install": {
+    "command": "npx power-apps-skill --target claude",
+    "manual": {
+      "skillPath": ".claude/skills/power-apps-code-apps/",
+      "projectFile": "CLAUDE.md"
+    }
+  }
+}

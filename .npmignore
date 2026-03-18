@@ -1,0 +1,28 @@
+# Source documentation (not needed in published package)
+alm.md
+analyze-data-request-response.md
+connect-to-azure-sql.md
+connect-to-copilot-studio.md
+connect-to-data.md
+connect-to-dataverse.md
+content-security-policy.md
+create-an-app-from-scratch.md
+create-basic-asset-management-api-azure-functions.md
+embed-iframe.md
+get-table-metadata.md
+migrate-to-v1.md
+npm-quickstart.md
+retrieve-context.md
+set-up-azure-app-insights.md
+sharepoint-operations.md
+telemetry.md
+
+# Platform-specific install scripts (Node.js installer replaces these)
+.agents/skills/power-apps-code-apps/scripts/install.sh
+.agents/skills/power-apps-code-apps/scripts/install.ps1
+
+# Development
+node_modules/
+.DS_Store
+Thumbs.db
+*.log

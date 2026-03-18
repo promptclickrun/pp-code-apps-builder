@@ -1,0 +1,73 @@
+{
+  "$schema": "https://aka.ms/copilot-extensions-schema/v1",
+  "id": "power-apps-code-apps",
+  "version": "1.0.0",
+  "name": "Power Apps Code Apps",
+  "displayName": "Power Apps Code Apps — Multi-Agent Skill",
+  "description": "Build, connect, deploy, and manage Power Apps Code Apps with 6 specialized AI agents covering frontend, backend, infrastructure, business analysis, architecture, and product management.",
+  "publisher": {
+    "name": "promptclickrun",
+    "url": "https://github.com/promptclickrun/pp-code-apps-builder"
+  },
+  "categories": [
+    "AI Skills",
+    "Development Tools",
+    "Power Platform"
+  ],
+  "license": "MIT",
+  "icon": "assets/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/promptclickrun/pp-code-apps-builder"
+  },
+  "engines": {
+    "copilot": "^1.0.0",
+    "vscode": "^1.95.0"
+  },
+  "capabilities": {
+    "skills": true,
+    "agents": true,
+    "instructions": false,
+    "hooks": false,
+    "mcp": false
+  },
+  "entrypoints": {
+    "skill": ".agents/skills/power-apps-code-apps/SKILL.md",
+    "agents": ".github/agents/",
+    "installer": "bin/install.js"
+  },
+  "installTargets": [
+    {
+      "platform": "copilot-vscode",
+      "skillPath": ".agents/skills/power-apps-code-apps/",
+      "agentsPath": ".github/agents/"
+    },
+    {
+      "platform": "copilot-cli",
+      "skillPath": ".agents/skills/power-apps-code-apps/",
+      "agentsPath": ".github/agents/"
+    },
+    {
+      "platform": "claude-code",
+      "skillPath": ".claude/skills/power-apps-code-apps/",
+      "projectFile": "CLAUDE.md"
+    },
+    {
+      "platform": "claude-cli",
+      "skillPath": ".claude/skills/power-apps-code-apps/",
+      "projectFile": "CLAUDE.md"
+    }
+  ],
+  "activation": {
+    "triggers": [
+      "power apps code app",
+      "code app",
+      "pac code",
+      "power-apps init",
+      "Dataverse",
+      "connect data source",
+      "deploy code app"
+    ],
+    "slashCommand": "/power-apps-code-apps"
+  }
+}

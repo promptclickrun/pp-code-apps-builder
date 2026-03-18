@@ -1,0 +1,100 @@
+{
+  "$schema": "https://aka.ms/copilot-skills-schema/v1",
+  "name": "power-apps-code-apps",
+  "version": "1.0.0",
+  "displayName": "Power Apps Code Apps",
+  "description": "Multi-agent skill for Power Apps Code Apps development — React/TypeScript apps on Power Platform with Dataverse, Azure SQL, SharePoint, Copilot Studio, and more.",
+  "publisher": "promptclickrun",
+  "categories": ["Development", "Power Platform", "React", "TypeScript"],
+  "icon": "assets/icon.png",
+  "skills": [
+    {
+      "name": "power-apps-code-apps",
+      "path": ".agents/skills/power-apps-code-apps/SKILL.md",
+      "description": "Orchestrate Power Apps Code Apps development across frontend, backend, infrastructure, business analysis, architecture, and product management.",
+      "triggers": [
+        "create code app",
+        "connect data source",
+        "Dataverse CRUD",
+        "Azure SQL",
+        "SharePoint operations",
+        "Copilot Studio",
+        "PAC CLI",
+        "npm CLI",
+        "ALM pipelines",
+        "CSP configuration",
+        "App Insights telemetry",
+        "iframe embed",
+        "migrate v1",
+        "deploy code app",
+        "code app architecture",
+        "code app requirements",
+        "code app roadmap"
+      ]
+    }
+  ],
+  "agents": [
+    {
+      "name": "power-apps-code-apps",
+      "path": ".github/agents/power-apps-code-apps.agent.md",
+      "role": "orchestrator",
+      "description": "Routes to specialized sub-agents by domain"
+    },
+    {
+      "name": "pa-frontend",
+      "path": ".github/agents/pa-frontend.agent.md",
+      "role": "specialist",
+      "domain": "frontend",
+      "description": "React, TypeScript, Vite, Fluent UI, scaffolding, migration, context API, iframe embedding"
+    },
+    {
+      "name": "pa-backend",
+      "path": ".github/agents/pa-backend.agent.md",
+      "role": "specialist",
+      "domain": "backend",
+      "description": "Dataverse, Azure SQL, SharePoint, Copilot Studio, CRUD, OData, metadata"
+    },
+    {
+      "name": "pa-infra",
+      "path": ".github/agents/pa-infra.agent.md",
+      "role": "specialist",
+      "domain": "infrastructure",
+      "description": "Deployment, ALM, CSP, App Insights, telemetry, Azure Functions, custom connectors"
+    },
+    {
+      "name": "pa-business-analyst",
+      "path": ".github/agents/pa-business-analyst.agent.md",
+      "role": "specialist",
+      "domain": "business-analysis",
+      "description": "Requirements, user stories, data modeling, validation rules, field mapping"
+    },
+    {
+      "name": "pa-architect",
+      "path": ".github/agents/pa-architect.agent.md",
+      "role": "specialist",
+      "domain": "architecture",
+      "description": "Solution topology, integration patterns, multi-environment strategy, security design"
+    },
+    {
+      "name": "pa-product-manager",
+      "path": ".github/agents/pa-product-manager.agent.md",
+      "role": "specialist",
+      "domain": "product-management",
+      "description": "Roadmap, sprint planning, release management, go-live checklists"
+    }
+  ],
+  "references": [
+    {
+      "name": "frontend",
+      "path": ".agents/skills/power-apps-code-apps/references/frontend.md"
+    },
+    {
+      "name": "backend-data",
+      "path": ".agents/skills/power-apps-code-apps/references/backend-data.md"
+    },
+    {
+      "name": "infra-ops",
+      "path": ".agents/skills/power-apps-code-apps/references/infra-ops.md"
+    }
+  ]
+}
